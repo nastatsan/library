@@ -1,5 +1,6 @@
 package sample;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 public class Administrator {
@@ -26,30 +27,38 @@ public class Administrator {
         return this.password.equals(password);
     }
     public Book editBookInformation(Book book, String info){
-        return new Book();
+
+        return book;
     }
 
     public Library editLibraryInformation(Library library, String info){
-        return new Library();
+        return library;
     }
 
     public Book deleteBookReview(Book book){
-        return new Book();
+        book.bookReview = new ArrayList<>();
+        return book;
     }
 
     public Library deleteLibraryReview(Library library){
-        return new Library();
+        library.libraryReview = new ArrayList<>();
+        return library;
     }
 
     public Book editBookAvailability(Book book){
-        return new Book();
+        book.bookAvailability = !book.bookAvailability;
+        return book;
     }
 
     public int updateAmountOfFreeComputerSeats(Library library, int seats){
-        return 0;
+        int res = library.computerSeats - seats;
+        library.computerSeats = seats;
+        return Math.abs(res);
     }
 
-    public int updateAmountOfFreeBookSeats(Book book, int seats){
-        return 0;
+    public int updateAmountOfFreeBookSeats(Library library, int seats){
+        int res = library.bookSeats - seats;
+        library.bookSeats = seats;
+        return Math.abs(res);
     }
 }
